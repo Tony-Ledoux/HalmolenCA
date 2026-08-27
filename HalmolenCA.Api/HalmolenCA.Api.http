@@ -1,0 +1,6 @@
+@HalmolenCA.Api_HostAddress = http://localhost:5140
+
+GET {{HalmolenCA.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

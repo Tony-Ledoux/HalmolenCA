@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="HalmolenCA.Api/HalmolenCA.Api.csproj" />
+  <Project Path="HalmolenCA.Application/HalmolenCA.Application.csproj" />
+  <Project Path="HalmolenCA.Domain/HalmolenCA.Domain.csproj" />
+  <Project Path="HalmolenCA.Infrastructure/HalmolenCA.Infrastructure.csproj" />
+</Solution>
