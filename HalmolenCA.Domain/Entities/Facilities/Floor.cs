@@ -1,5 +1,5 @@
 ﻿using HalmolenCA.Domain.Common;
-using HalmolenCA.Domain.Services;
+using HalmolenCA.Domain.Repositories;
 
 namespace HalmolenCA.Domain.Entities.Facilities
 {
@@ -12,7 +12,7 @@ namespace HalmolenCA.Domain.Entities.Facilities
 
         private Floor() { }
 
-        public static async Task<Result<Floor>> Create(string name, int level, IFacilitiesService service)
+        public static Result<Floor> Create(string name, int level)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -29,12 +29,6 @@ namespace HalmolenCA.Domain.Entities.Facilities
             }
 
             var n = name.Trim();
-
-            var floorDoesNotExist = await service.FloorDoesNotExistAsync(n, level);
-            if(!floorDoesNotExist.IsSuccess)
-            {
-                return Result<Floor>.Failure(floorDoesNotExist.Message);
-            }
 
             var floor = new Floor
             {

@@ -1,5 +1,5 @@
 ﻿using HalmolenCA.Domain.Common;
-using HalmolenCA.Domain.Services;
+using HalmolenCA.Domain.Repositories;
 
 namespace HalmolenCA.Domain.Entities.Facilities
 {
@@ -14,18 +14,14 @@ namespace HalmolenCA.Domain.Entities.Facilities
 
         private Department() { }
 
-        public static async Task<Result<Department>> CreateAsync(string name, bool isCareDepartment, IFacilitiesService service)
+        public static Result<Department> Create(string name, bool isCareDepartment)
         {
             if (string.IsNullOrWhiteSpace(name.ToString()))
             {
                 return Result<Department>.Failure("Naam mag niet leeg zijn.");
             }
             var n = name.Trim();
-            var departmentExists = await service.DepartmentDoesNotExistsAsync(n);
-            if(!departmentExists.IsSuccess)
-            {
-                return Result<Department>.Failure(departmentExists.Message);
-            }
+           
             var department = new Department
             {
                 Name = n,
