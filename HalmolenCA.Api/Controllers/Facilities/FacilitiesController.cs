@@ -10,7 +10,7 @@ namespace HalmolenCA.Api.Controllers.Facilities
         [HttpPost("floors")]
         public IActionResult CreateFloor()
         {
-        
+            return Ok("Floor created successfully.");
         }
     }
 }
